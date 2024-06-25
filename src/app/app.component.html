@@ -1,8 +1,10 @@
 <mat-drawer-container class="sidenav_container" autosize>
   <mat-drawer #drawer class="sidenav" [opened]="true" mode="side">
-    <div class="logo_container">
-    <img class="logo" src="/assets/img/logo.png" alt="">
-    </div>
+  <div class="logo_container">
+    <span class="menu_title">MENU</span>
+  </div>
+  
+
 
     <ul class="menu_items">
       <li [routerLink]="['/']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }">
@@ -17,17 +19,14 @@
   <div class="example-sidenav-content">
     <mat-toolbar class="toolbar">
       <mat-icon class="nav_icon" (click)="drawer.toggle()">menu</mat-icon>
-      <span>Simple CRM</span>
+      
+        <img class="logo" src="/assets/img/logo.png" alt="">
+
     </mat-toolbar>
 
 <div class="router_outlet_container">
   <router-outlet></router-outlet>
 
-  <button class="add_btn mat-fab extended" matTooltip="Add User"
-  aria-label="Button that displays a tooltip when focused or hovered over">
-    <mat-icon class="fab_btn">add</mat-icon>
-    
-  </button>
 </div>
 
 
