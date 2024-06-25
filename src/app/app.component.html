@@ -1,7 +1,7 @@
 <mat-drawer-container class="sidenav_container" autosize>
   <mat-drawer #drawer class="sidenav" [opened]="true" mode="side">
     <div class="logo_container">
-    LOGO
+    <img class="logo" src="/assets/img/logo.png" alt="">
     </div>
 
     <ul class="menu_items">
@@ -22,7 +22,15 @@
 
 <div class="router_outlet_container">
   <router-outlet></router-outlet>
+
+  <button class="add_btn mat-fab extended" matTooltip="Add User"
+  aria-label="Button that displays a tooltip when focused or hovered over">
+    <mat-icon class="fab_btn">add</mat-icon>
+    
+  </button>
 </div>
 
+
   </div>
+
 </mat-drawer-container>
