@@ -1,3 +1,74 @@
 .sidenav_container{
     height: 100vh;
 }
+
+.nav_icon {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+    &:hover{
+        background-color: rgb(65, 65, 65);
+        border-radius: 50%;
+
+        
+    }
+}
+.sidenav {
+    width: 300px;
+
+}
+
+.logo_container {
+ border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+ display: flex;
+ align-items: center;
+ height: 55px;
+ justify-content: center;
+ padding-left: 16px;
+ padding-right: 16px;
+}
+mat-toolbar, mat-toolbar-row{
+    min-height: 56px;
+    height: 56px;
+}
+
+.menu_items{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li{
+        padding-left: 16px;
+        padding-right: 16px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+       
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+}
+.material-icons {
+    margin-right:  16px;
+}
+.router_outlet_container {
+    padding-left: 56px;
+    padding-top: 16px;
+}
+.router-link-active-user{
+    font-weight: bold;
+  }
+  .router-link-active {
+    font-weight: bold;
+}
+
+.menu_items li.router-link-active:nth-child(1) {
+    color: rgb(255, 145, 0); 
+}
+
+.menu_items li.router-link-active:nth-child(2) {
+    color: rgb(255, 145, 0); 
+}
