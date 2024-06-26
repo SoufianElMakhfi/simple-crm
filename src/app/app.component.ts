@@ -13,8 +13,6 @@ import { RouterModule } from '@angular/router';
     MatSidenavModule,
     MatIconModule,
     RouterModule,
-  
-  
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
