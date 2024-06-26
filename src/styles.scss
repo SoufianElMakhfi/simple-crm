@@ -1,6 +1,26 @@
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.logo{
+.logo {
 width: 130px;
+}
+
+.mr-16 {
+    margin-right: 16px;
+}
+
+.ml-16 {
+    margin-left: 16px
+}
+
+.full_width {
+    width: 100%;
+}
+
+.btn_no_style {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: lightgrey;
 }
