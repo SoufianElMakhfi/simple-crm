@@ -4,20 +4,20 @@
 <div>
   <mat-form-field class="custom-focus-border mr-16 mt-16" appearance="outline">
     <mat-label>First Name</mat-label>
-    <input matInput placeholder="...">
+    <input [(ngModel)]="user.firstName" matInput placeholder="...">
   </mat-form-field>
 
 
   <mat-form-field  appearance="outline">
     <mat-label>Last Name</mat-label>
-    <input matInput placeholder="...">
+    <input [(ngModel)]="user.lastName" matInput placeholder="...">
     <!-- <mat-hint>Please enter a name</mat-hint> -->
   </mat-form-field>
 </div>
 
 <mat-form-field class="mr-16 full_width mat-form-field-appearance-outline">
   <mat-label>Custom calendar header</mat-label>
-  <input matInput [matDatepicker]="picker">
+  <input [(ngModel)]="birthDate" matInput [matDatepicker]="picker">
   <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
@@ -27,7 +27,7 @@
 <div>
   <mat-form-field class="mr-16 full_width" appearance="outline">
     <mat-label>Street & House Nr.</mat-label>
-    <input matInput placeholder="...">
+    <input [(ngModel)]="user.street" matInput placeholder="...">
     <!-- <mat-hint>Please enter a ..</mat-hint> -->
   </mat-form-field>
 
@@ -36,15 +36,15 @@
 
 <div>
   <mat-form-field class="mr-16" appearance="outline">
-    <mat-label>Last Name</mat-label>
-    <input matInput placeholder="...">
+    <mat-label>Zip Code</mat-label>
+    <input [(ngModel)]="user.zipCode" matInput placeholder="...">
     <!-- <mat-hint>Please enter a name</mat-hint> -->
   </mat-form-field>
 
   
 <mat-form-field  appearance="outline">
-  <mat-label>Last Name</mat-label>
-  <input matInput placeholder="...">
+  <mat-label>City</mat-label>
+  <input [(ngModel)]="user.city" matInput placeholder="...">
   <!-- <mat-hint>Please enter a name</mat-hint> -->
 </mat-form-field>
 </div>
@@ -54,5 +54,5 @@
 
 <mat-dialog-actions>
   <button mat-button class="btn_no_style ml-16">Cancel</button>
-  <button mat-button cdkFocusInitial class="btn_no_style">Save</button>
+  <button (click)="saveUser()" mat-button cdkFocusInitial class="btn_no_style">Save</button>
 </mat-dialog-actions>
