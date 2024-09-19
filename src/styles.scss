@@ -45,11 +45,26 @@ width: 130px;
 
 .btn_no_style {
     background: none;
-    border: none;
+    border: 1px solid #4d4d4d;
+    border-radius: 8px;
     cursor: pointer;
     color: lightgrey;
+    padding: 16px;
+    margin-bottom: 8px;
+    margin-right: 16px;
+
+}
+.btn_no_style:hover {
+background-color: #ffeed7;
+color: rgb(26, 26, 26);
+
+border-radius: 8px;
 }
 
 .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-text-field__input{
     caret-color: white;
+}
+
+.cdk-overlay-dark-backdrop {
+    background: rgba(0, 0, 0, .72);
 }

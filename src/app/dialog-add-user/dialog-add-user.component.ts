@@ -8,6 +8,7 @@ import { provideNativeDateAdapter, MatNativeDateModule } from '@angular/material
 import { User } from '../../models/user.class';
 import { FormsModule } from '@angular/forms';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -19,7 +20,8 @@ import { Firestore, collection, addDoc } from '@angular/fire/firestore';
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FormsModule
+    FormsModule,
+    MatProgressBarModule,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './dialog-add-user.component.html',
@@ -28,9 +30,14 @@ import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 export class DialogAddUserComponent implements OnInit {
   user: User = new User(); // Verwendung der User-Klasse
   birthDate!: Date; // Das Geburtsdatum sollte vom Typ Date sein
+  loading: boolean = true;
 
+  
+  
   constructor(private firestore: Firestore) { }
 
+  
+  
   ngOnInit(): void {
     // Initialisierungen können hier vorgenommen werden
   }
@@ -60,4 +67,5 @@ export class DialogAddUserComponent implements OnInit {
       console.error('Birth date is not set!');
     }
   }
+
 }

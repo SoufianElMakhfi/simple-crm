@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component} from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+
 
 
 interface Item {
@@ -19,7 +20,6 @@ interface Item {
     MatSidenavModule,
     MatIconModule,
     RouterModule,
-    
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
