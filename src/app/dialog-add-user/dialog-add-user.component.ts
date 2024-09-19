@@ -30,7 +30,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 export class DialogAddUserComponent implements OnInit {
   user: User = new User(); // Verwendung der User-Klasse
   birthDate!: Date; // Das Geburtsdatum sollte vom Typ Date sein
-  loading: boolean = true;
+  loading: boolean = false;
 
   
   
@@ -53,6 +53,8 @@ export class DialogAddUserComponent implements OnInit {
         city: this.user.city,
         birthDate: this.birthDate.getTime(), // Geburtsdatum als Timestamp
       };
+      this.loading = true;
+
   
       console.log('Current user data is', userData);
   
@@ -60,12 +62,14 @@ export class DialogAddUserComponent implements OnInit {
         const usersCollection = collection(this.firestore, 'users');
         const docRef = await addDoc(usersCollection, userData);
         console.log('User added successfully with ID: ', docRef.id);
+        this.loading = true;
+        
       } catch (error) {
         console.error('Error adding user: ', error);
+        this.loading = false;
       }
     } else {
       console.error('Birth date is not set!');
     }
   }
-
 }
