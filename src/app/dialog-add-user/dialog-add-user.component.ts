@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogActions } from '@angular/material/dialog';
+import { MatDialogActions, MatDialogRef } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'; 
@@ -9,6 +9,7 @@ import { User } from '../../models/user.class';
 import { FormsModule } from '@angular/forms';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -22,6 +23,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatNativeDateModule,
     FormsModule,
     MatProgressBarModule,
+    
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './dialog-add-user.component.html',
@@ -34,8 +36,10 @@ export class DialogAddUserComponent implements OnInit {
 
   
   
-  constructor(private firestore: Firestore) { }
-
+  constructor(
+    public dialogRef: MatDialogRef<DialogAddUserComponent>, 
+    private firestore: Firestore
+  ) {}
   
   
   ngOnInit(): void {
@@ -44,7 +48,7 @@ export class DialogAddUserComponent implements OnInit {
 
   async saveUser() {
     if (this.birthDate) {
-      // Konvertiere das User-Objekt in ein einfaches JavaScript-Objekt
+
       const userData = {
         firstName: this.user.firstName,
         lastName: this.user.lastName,
@@ -54,22 +58,22 @@ export class DialogAddUserComponent implements OnInit {
         birthDate: this.birthDate.getTime(), // Geburtsdatum als Timestamp
       };
       this.loading = true;
+      
+      console.log('Current user data is', userData);
 
   
-      console.log('Current user data is', userData);
-  
-      try {
+      try { // Wir verwenden try/catch, um Fehler bei asynchronen Operationen abzufangen und das Programm stabil weiterlaufen zu lassen.
         const usersCollection = collection(this.firestore, 'users');
         const docRef = await addDoc(usersCollection, userData);
         console.log('User added successfully with ID: ', docRef.id);
-        this.loading = true;
-        
+        this.loading = false;
+        this.dialogRef.close(); // Dialog nach erfolgreichem Speichern schließen
+
       } catch (error) {
         console.error('Error adding user: ', error);
-        this.loading = false;
       }
     } else {
-      console.error('Birth date is not set!');
+      console.error('something went wrong!');
     }
   }
 }
