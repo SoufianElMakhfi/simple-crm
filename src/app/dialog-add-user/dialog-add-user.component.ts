@@ -52,10 +52,12 @@ export class DialogAddUserComponent implements OnInit {
       const userData = {
         firstName: this.user.firstName,
         lastName: this.user.lastName,
+        email:  this.user['email'],
         street: this.user.street,
         zipCode: this.user.zipCode,
         city: this.user.city,
         birthDate: this.birthDate.getTime(), // Geburtsdatum als Timestamp
+        
       };
       this.loading = true;
       
