@@ -10,34 +10,15 @@
         <th>City</th>
       </tr>
 
-      <tr>
-        <td>fill data</td>
-        <td>fill data</td>
-        <td>fill data</td>
-        <td>fill data</td>
-        <td>fill data</td>
-        <td>fill data</td>
-      </tr>
-
-      <tr>
-        <td>fill data2</td>
-        <td>fill data2</td>
-        <td>fill data2</td>
-        <td>fill data2</td>
-        <td>fill data2</td>
-        <td>fill data2</td>
-      </tr>
-
-      <tr>
-        <td>fill data3</td>
-        <td>fill data3</td>
-        <td>fill data3</td>
-        <td>fill data3</td>
-        <td>fill data3</td>
-        <td>fill data3</td>
+      <tr *ngFor="let user of users$ | async">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.birthDate }}</td>
+        <td>{{ user.street }}</td>
+        <td>{{ user.zipCode }}</td>
+        <td>{{ user.city }}</td>
       </tr>
     </table>
-
   </mat-card-content>
 </mat-card>
 
