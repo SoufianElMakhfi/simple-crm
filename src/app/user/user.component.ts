@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -21,6 +22,7 @@ import { CommonModule } from '@angular/common';
     DialogAddUserComponent,
     MatCardModule,
     CommonModule,
+    RouterModule
   ],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
@@ -32,13 +34,14 @@ export class UserComponent {
 
   constructor(public dialog: MatDialog, private firestore: Firestore) {
     const usersCollection = collection(this.firestore, 'users');
-    this.users$ = collectionData(usersCollection, { idField: 'customIdName' }) as Observable<User[]>; // Typanpassung hier
+    this.users$ = collectionData(usersCollection, { idField: 'userId' }) as Observable<User[]>; // Typanpassung hier
     // Abonnieren des Observables, um die Werte zu sehen
     this.users$.subscribe(users => {
       console.log('Received from DB:', users);
       this.allUsers = users; // hier users verwenden
     });
   }
+
 
   openDialog(): void {
     this.dialog.open(DialogAddUserComponent, {});
