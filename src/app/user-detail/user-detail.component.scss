@@ -1,4 +1,4 @@
-mat-card{
+.user_card{
    min-height: 250px; 
    background-color: bisque;
    display: flex;
@@ -19,6 +19,15 @@ mat-card{
 
 h2 {
    margin: 0;
+}
+
+.card_content {
+   padding: 0;
+}
+
+.user_address {
+   padding: 16px;
+
 }
 
 
