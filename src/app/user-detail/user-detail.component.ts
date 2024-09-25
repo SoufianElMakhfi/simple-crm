@@ -6,6 +6,8 @@ import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 import { User } from '../../models/user.class';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 
 
@@ -17,6 +19,7 @@ import { MatIcon } from '@angular/material/icon';
     MatDialogModule,
     MatButtonModule,
     MatIcon,
+    MatMenuModule
 
   ],
   templateUrl: './user-detail.component.html',
@@ -52,6 +55,6 @@ export class UserDetailComponent {
     });
   }
   openAddressDialog(){
-    
+
   }
 }

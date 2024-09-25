@@ -1,8 +1,13 @@
 
 <mat-card class="user_card">   
-    <button class="vert_btn" (click)="openAddressDialog()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+    <button class="vert_btn"  [matMenuTriggerFor]="menu" (click)="openAddressDialog()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
         <mat-icon>more_vert</mat-icon>
       </button>
+      
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="editMenu()">Edit</button>
+      </mat-menu>
+
 
 <img class="user_icon" src="/assets/img/user_icon.png" alt="profile_avatar">
 
