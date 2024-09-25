@@ -1,11 +1,11 @@
 
 <mat-card class="user_card">   
-    <button class="vert_btn"  [matMenuTriggerFor]="menu" (click)="openAddressDialog()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+    <button class="vert_btn"  [matMenuTriggerFor]="menu" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
         <mat-icon>more_vert</mat-icon>
       </button>
       
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="editMenu()">Edit</button>
+        <button mat-menu-item (click)="editMenuUser()">Edit</button>
       </mat-menu>
 
 
@@ -18,10 +18,22 @@
 </mat-card>
 
 <mat-card class="user_address mt32">
-    <mat-card-title>Address</mat-card-title>
 
+    <button class="vert_btn_address"  [matMenuTriggerFor]="menu" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="editMenuAddress()">Edit</button>
+      </mat-menu>
+
+    <mat-card-title>Address</mat-card-title>
     <mat-card-content class="card_content">
         {{user.street}} <br>
         {{user.zipCode}} {{user.city}}   
+
     </mat-card-content>
+
+
+    
 </mat-card>

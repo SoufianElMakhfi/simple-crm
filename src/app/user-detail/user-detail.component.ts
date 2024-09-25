@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 import { User } from '../../models/user.class';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
+import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
 
 
@@ -19,7 +22,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDialogModule,
     MatButtonModule,
     MatIcon,
-    MatMenuModule
+    MatMenuModule,
+  
 
   ],
   templateUrl: './user-detail.component.html',
@@ -30,7 +34,11 @@ export class UserDetailComponent {
   userId = '';
   user: User = new User();  // Initialisiere mit einem neuen User-Objekt
 
-  constructor(private route: ActivatedRoute, private firestore: Firestore) {}
+  constructor( 
+    public dialog: MatDialog, 
+    private route: ActivatedRoute, 
+    private firestore: Firestore)
+    {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
@@ -54,7 +62,10 @@ export class UserDetailComponent {
       console.error('Error fetching user data:', error);
     });
   }
-  openAddressDialog(){
-
+  editMenuUser(){
+    this.dialog.open(DialogEditUserComponent);
+  }
+  editMenuAddress(){
+    this.dialog.open(DialogEditAddressComponent);
   }
 }

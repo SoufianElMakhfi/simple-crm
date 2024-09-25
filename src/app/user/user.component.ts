@@ -33,6 +33,7 @@ export class UserComponent {
   allUsers: User[] = []; // Typisierung für allUsers
 
   constructor(public dialog: MatDialog, private firestore: Firestore) {
+    
     const usersCollection = collection(this.firestore, 'users');
     this.users$ = collectionData(usersCollection, { idField: 'userId' }) as Observable<User[]>; // Typanpassung hier
     // Abonnieren des Observables, um die Werte zu sehen
