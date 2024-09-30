@@ -29,7 +29,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
   templateUrl: './dialog-add-user.component.html',
   styleUrls: ['./dialog-add-user.component.scss']
 })
-export class DialogAddUserComponent implements OnInit {
+export class DialogAddUserComponent {
   user: User = new User(); // Verwendung der User-Klasse
   birthDate!: Date; // Das Geburtsdatum sollte vom Typ Date sein
   loading: boolean = false;
@@ -42,9 +42,7 @@ export class DialogAddUserComponent implements OnInit {
   ) {}
   
   
-  ngOnInit(): void {
-    // Initialisierungen können hier vorgenommen werden
-  }
+
 
   async saveUser() {
     if (this.birthDate) {
