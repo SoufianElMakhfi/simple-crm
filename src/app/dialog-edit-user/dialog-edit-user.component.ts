@@ -17,9 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatButtonModule,
     MatDialogModule,
-  
   ],
-
   templateUrl: './dialog-edit-user.component.html',
   styleUrl: './dialog-edit-user.component.scss'
 })

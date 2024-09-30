@@ -4,14 +4,11 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 import { User } from '../../models/user.class';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
-
-
-
 
 @Component({
   selector: 'app-user-detail',
@@ -22,26 +19,22 @@ import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.co
     MatButtonModule,
     MatIcon,
     MatMenuModule,
-  
-
   ],
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.scss'] 
+  styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent {
-
   userId = '';
-  user: User = new User();  // Initialisiere mit einem neuen User-Objekt
+  user: User = new User();
 
-  constructor( 
-    public dialog: MatDialog, 
-    private route: ActivatedRoute, 
-    private firestore: Firestore)
-    {}
+  constructor(
+    public dialog: MatDialog,
+    private route: ActivatedRoute,
+    private firestore: Firestore) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
-      this.userId = paramMap.get('id') ?? '';  // Setzt einen leeren String, wenn id null ist
+      this.userId = paramMap.get('id') ?? '';
       console.log('got id:', this.userId);
       this.getUser();
     });
@@ -51,8 +44,7 @@ export class UserDetailComponent {
     const userDocRef = doc(this.firestore, `users/${this.userId}`);
     getDoc(userDocRef).then(snapshot => {
       if (snapshot.exists()) {
-        // Übertrage die Daten ins User-Objekt
-        this.user = new User(snapshot.data() as any);  // Übergebe die Daten an das User-Objekt
+        this.user = new User(snapshot.data() as any);
         console.log('User data:', this.user);
       } else {
         console.log('No such user found!');
@@ -61,13 +53,16 @@ export class UserDetailComponent {
       console.error('Error fetching user data:', error);
     });
   }
- 
-  editMenu(){
+
+  editMenu() {
     const dialog = this.dialog.open(DialogEditAddressComponent);
-    dialog.componentInstance.user = this.user;
+    dialog.componentInstance.user = new User(this.user);
+    dialog.componentInstance.userId = this.userId; // Setze die userId
   }
-  editUserDetail(){
+
+  editUserDetail() {
     const dialog = this.dialog.open(DialogEditUserComponent);
-    dialog.componentInstance.user = this.user;
-}
+    dialog.componentInstance.user = new User(this.user);
+    // dialog.componentInstance.userId = this.userId;
+  }
 }

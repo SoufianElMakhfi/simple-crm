@@ -7,18 +7,27 @@ export class User {
     street!: string;
     zipCode!: number;
     city!: string;
-     // Das Ausrufezeichen (!) teilt TypeScript mit, dass diese Eigenschaften 
-    // definitiv initialisiert werden, auch wenn TypeScript dies nicht direkt sehen kann, ein Wert wird also definitiv gegeben.
 
     constructor(obj?: any) {
         this.firstName = obj ? obj.firstName : '';
         this.lastName = obj ? obj.lastName : '';
         this.email = obj ? obj.email : '';
-        this.birthDate = obj ? obj.birthDate : '';
+        this.birthDate = obj ? obj.birthDate : 0; // Setze als Zahl
         this.street = obj ? obj.street : '';
-        this.zipCode = obj ? obj.zipCode : '';
+        this.zipCode = obj ? obj.zipCode : 0; // Setze als Zahl
         this.city = obj ? obj.city : '';
-                // Wenn obj definiert ist und obj.street existiert, wird this.street auf obj.street gesetzt. Andernfalls wird this.street auf einen leeren String gesetzt.
+    }
 
+    // Füge die toJSON-Methode hinzu
+    toJSON() {
+        return {
+            firstName: this.firstName,
+            lastName: this.lastName,
+            email: this.email,
+            birthDate: this.birthDate,
+            street: this.street,
+            zipCode: this.zipCode,
+            city: this.city,
+        };
     }
 }
