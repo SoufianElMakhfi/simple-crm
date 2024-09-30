@@ -8,7 +8,6 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
-import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
 
@@ -62,10 +61,11 @@ export class UserDetailComponent {
       console.error('Error fetching user data:', error);
     });
   }
-  editMenuUser(){
-    this.dialog.open(DialogEditUserComponent);
-  }
-  editMenuAddress(){
+ 
+  editMenu(){
     this.dialog.open(DialogEditAddressComponent);
+  }
+  editUserDetail(){
+    this.dialog.open(DialogEditUserComponent);
   }
 }
