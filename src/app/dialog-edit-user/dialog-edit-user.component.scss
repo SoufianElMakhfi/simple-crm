@@ -1,3 +1,11 @@
+.input_address {
+    width: 100%;
+}
+.mat-mdc-progress-bar {
+    --mdc-linear-progress-active-indicator-color: #ffeed7;
+    --mdc-linear-progress-track-color: rgba(255, 250, 238, 0.25);
+}
+
 .btn_no_style {
     background: none;
     border: 1px solid #4d4d4d;
@@ -16,4 +24,6 @@ color: rgb(26, 26, 26);
 
 .mdc-dialog__actions {
     margin-left: -24px;
-    }
+    
+}
+
