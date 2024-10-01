@@ -63,6 +63,6 @@ export class UserDetailComponent {
   editUserDetail() {
     const dialog = this.dialog.open(DialogEditUserComponent);
     dialog.componentInstance.user = new User(this.user);
-    // dialog.componentInstance.userId = this.userId;
+    dialog.componentInstance.userId = this.userId; 
   }
 }
